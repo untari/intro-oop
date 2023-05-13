@@ -3,7 +3,6 @@
 // main function
 int main(){
     while(true){
-
         printMenu();
         int userOption = getUserOption();
         processUserOption(userOption);
@@ -38,6 +37,35 @@ void printMenu(){
     std::cout << "===========" << std::endl;
 }
 
+void printHelp(){
+    std::cout << "help - your aim is to make money. analyse the market and bids the market" << std::endl;
+}
+
+void printMarketStats();
+{
+    std::cout << "market looks good" << std::endl;
+}
+
+void enterOffer();
+{
+    std::cout << "mark and offer - enter the amount " << std::endl;
+}
+
+void enterBid();
+{
+    std::cout << "make a bid - enter the amount" << std::endl;
+}
+
+void printWallet();
+{
+    std::cout << "your wallet is empty" << std::endl;
+}
+
+void goToNextTimeframe();
+{
+    std::cout << "going to next time frame" << std::endl;
+}
+
 void processUserOption(int userOption)
 {
     if (userOption == 0) //bad input
@@ -46,26 +74,26 @@ void processUserOption(int userOption)
     }
     if (userOption == 1) //bad input
     {
-        std::cout << "help - your aim is to make money. analyse the market and bids the market" << std::endl;
+        printHelp();
     }
     if (userOption == 2) //bad input
     {
-        std::cout << "market looks good" << std::endl;
+        printMarketStats();
     }
     if (userOption == 3) //bad input
     {
-        std::cout << "mark and offer - enter the amount " << std::endl;
+        enterOffer();
     }
     if (userOption == 4) //bad input
     {
-        std::cout << "make a bid - enter the amount" << std::endl;
+        enterBid();
     }
     if (userOption == 5) //bad input
     {
-        std::cout << "your wallet is empty" << std::endl;
+        printWallet();
     }
     if (userOption == 6) //bad input
     {
-        std::cout << "going to next time frame" << std::endl;
+        goToNextTimeframe();
     }
 }
