@@ -152,8 +152,14 @@ int main(){
     //     processUserOption(userOption);
     // }
 
+    // multiple order books 
+    std::vector<OrderBookEntry> orders;
+
     // creat an object for class OrderBookEntry
-    OrderBookEntry order1{1000, 0.02, "2020/03/17 17:01:24.884492", "BTC/USDT", OrderBookType::bid};
+    OrderBookEntry order1{1000, 0.02, "2020/03/17 17:01:24.884492", "BTC/USDT", 
+    OrderBookType::bid};
+
+    orders.push_back(order1);
     // order1.price = 10000;
     // order1.amount = 0.09;
     // order1.timestamp = "2020/03/17 17:01:24.884492";
@@ -162,6 +168,7 @@ int main(){
 
     // print it out
     std::cout << "the price is " << order1.price << std::endl;
+    
 }
 
 
