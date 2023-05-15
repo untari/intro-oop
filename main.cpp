@@ -2,6 +2,20 @@
 #include <string>
 #include <vector>
 
+// define enum class(it's a way of specifying a new type with 2 values)
+enum class OrderBookType{bid, ask};
+
+// define class
+class OrderBookEntry{
+    public:
+        // declare the variables
+        double price;
+        double amount;
+        std::string timestamp;
+        std::string product;
+        OrderBookType orderType;
+};
+
 void printMenu(){
     // 1. print help
     std::cout << "1: print help" << std::endl;
@@ -92,9 +106,7 @@ void processUserOption(int userOption)
 
 // main function
 int main(){
-    // define enum class(it's a way of specifying a new type with 2 values)
-    enum class OrderBookType{bid, ask};
-    
+
     //data model to represent one item in the order book
     // double price = 5319.450228;
     // double amount = 0.00020075;
@@ -107,21 +119,21 @@ int main(){
     // bool orderType = true;
 
     // using vector to represent multiple order book entries
-    std::vector<double> prices;
-    std::vector<double> amounts;
-    std::vector<std::string> timestamps;
-    std::vector<std::string> products;
-    std::vector<OrderBookType> orderType;
+    // std::vector<double> prices;
+    // std::vector<double> amounts;
+    // std::vector<std::string> timestamps;
+    // std::vector<std::string> products;
+    // std::vector<OrderBookType> orderType;
 
-    prices.push_back(10.01);
-    amounts.push_back(0.006);
-    timestamps.push_back("2020/03/17 17:01:24.884492");
-    products.push_back("BTC/USDT");
-    orderType.push_back(OrderBookType::bid);
+    // prices.push_back(10.01);
+    // amounts.push_back(0.006);
+    // timestamps.push_back("2020/03/17 17:01:24.884492");
+    // products.push_back("BTC/USDT");
+    // orderType.push_back(OrderBookType::bid);
 
     // to access/print data a vector 
-    std::cout << "prices: " << prices[0] << std::endl;
-    std::cout << "prices: " << prices[1] << std::endl;
+    // std::cout << "prices: " << prices[0] << std::endl;
+    // std::cout << "prices: " << prices[1] << std::endl;
 
 
     // while(true){
@@ -129,5 +141,17 @@ int main(){
     //     int userOption = getUserOption();
     //     processUserOption(userOption);
     // }
-    return 0;
+
+    // creat an object for class OrderBookEntry
+    OrderBookEntry order1;
+    order1.price = 10000;
+    order1.amount = 0.09;
+    order1.timestamp = "2020/03/17 17:01:24.884492";
+    order1.product = "BTC/USDT";
+    order1.orderType = OrderBookType::bid;
+
+    // print it out
+    std::cout << "the price is " << order1.price << std::endl;
 }
+
+
