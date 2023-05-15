@@ -99,7 +99,14 @@ int main(){
     //declare new variable, type of variable is standard string
     std::string timestamp{"2020/03/17 17:01:24.884492"};
     std::string products{"BTC/USDT"};
-    std::string orderType{"bid"};
+    // std::string orderType{"anything"};
+
+    // define enum class(it's a way of specifying a new type with 2 values)
+    enum class OrderBookType{bid, ask};
+    
+    OrderBookType orderType = OrderBookType::ask;
+    //boolean data type
+    // bool orderType = true;
 
     while(true){
         printMenu();
