@@ -96,27 +96,38 @@ int main(){
     enum class OrderBookType{bid, ask};
     
     //data model to represent one item in the order book
-    double price = 5319.450228;
-    double amount = 0.00020075;
+    // double price = 5319.450228;
+    // double amount = 0.00020075;
 
     //declare new variable, type of variable is standard string
-    std::string timestamp{"2020/03/17 17:01:24.884492"};
-    std::string products{"BTC/USDT"};
-    OrderBookType orderType = OrderBookType::ask;
+    // std::string timestamp{"2020/03/17 17:01:24.884492"};
+    // std::string products{"BTC/USDT"};
+    // OrderBookType orderType = OrderBookType::ask;
     //boolean data type
     // bool orderType = true;
 
-    // to present 2 column of data
-    double price2 = 5319.450228;
-    double amount2 = 0.00020075;
-    std::string timestamp{"2020/03/17 17:01:24.884492"};
-    std::string products{"BTC/USDT"};
-    OrderBookType orderType = OrderBookType::ask;
+    // using vector to represent multiple order book entries
+    std::vector<double> prices;
+    std::vector<double> amounts;
+    std::vector<std::string> timestamps;
+    std::vector<std::string> products;
+    std::vector<OrderBookType> orderType;
 
-    while(true){
-        printMenu();
-        int userOption = getUserOption();
-        processUserOption(userOption);
-    }
+    prices.push_back(10.01);
+    amounts.push_back(0.006);
+    timestamps.push_back("2020/03/17 17:01:24.884492");
+    products.push_back("BTC/USDT");
+    orderType.push_back(OrderBookType::bid);
+
+    // to access/print data a vector 
+    std::cout << "prices: " << prices[0] << std::endl;
+    std::cout << "prices: " << prices[1] << std::endl;
+
+
+    // while(true){
+    //     printMenu();
+    //     int userOption = getUserOption();
+    //     processUserOption(userOption);
+    // }
     return 0;
 }
