@@ -1,24 +1,5 @@
 #include <iostream>
-
-// main function
-int main(){
-    while(true){
-        printMenu();
-        int userOption = getUserOption();
-        processUserOption(userOption);
-    }
-    return 0;
-}
-
-int getUserOption(){
-
-    int userOption(); 
-
-    std::cout << "Type in 1-6" << std::endl;
-    std::cin >> userOption;
-    std::cout << "you choose: " << userOption << std::endl;
-    return userOption;
-}
+#include <string>
 
 void printMenu(){
     // 1. print help
@@ -41,29 +22,39 @@ void printHelp(){
     std::cout << "help - your aim is to make money. analyse the market and bids the market" << std::endl;
 }
 
-void printMarketStats();
+void printMarketStats()
 {
     std::cout << "market looks good" << std::endl;
 }
 
-void enterOffer();
+void enterOffer()
 {
     std::cout << "mark and offer - enter the amount " << std::endl;
 }
 
-void enterBid();
+void enterBid()
 {
     std::cout << "make a bid - enter the amount" << std::endl;
 }
 
-void printWallet();
+void printWallet()
 {
     std::cout << "your wallet is empty" << std::endl;
 }
 
-void goToNextTimeframe();
+void goToNextTimeframe()
 {
     std::cout << "going to next time frame" << std::endl;
+}
+
+int getUserOption(){
+
+    int userOption; 
+
+    std::cout << "Type in 1-6" << std::endl;
+    std::cin >> userOption;
+    std::cout << "you choose: " << userOption << std::endl;
+    return userOption;
 }
 
 void processUserOption(int userOption)
@@ -96,4 +87,24 @@ void processUserOption(int userOption)
     {
         goToNextTimeframe();
     }
+}
+
+// main function
+int main(){
+
+    //data model to represent one item in the order book
+    double price = 5319.450228;
+    double amount = 0.00020075;
+
+    //declare new variable, type of variable is standard string
+    std::string timestamp{"2020/03/17 17:01:24.884492"};
+    std::string products{"BTC/USDT"};
+    std::string orderType{"bid"};
+
+    while(true){
+        printMenu();
+        int userOption = getUserOption();
+        processUserOption(userOption);
+    }
+    return 0;
 }
