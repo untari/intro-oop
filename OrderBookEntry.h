@@ -1,3 +1,5 @@
+#pragma once
+
 #include  <string>
 
 // define enum class(it's a way of specifying a new type with 2 values)
