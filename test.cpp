@@ -40,10 +40,18 @@ int main()
 {
     // create an object
     std::ifstream csvFile{"20200317.csv"};
+    std::string line;
 
     if(csvFile.is_open())
     {
         std::cout << "file open " << std::endl;
+
+        while(std::getline(csvFile, line))
+        {
+            std::cout << "read line " << line << std::endl;
+        }
+        std::getline(csvFile, line);
+
         csvFile.close();
     }
     else
