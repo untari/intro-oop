@@ -1,6 +1,6 @@
 #include "OrderBookEntry.h"
 
-// define constructors
+//define constructors
 OrderBookEntry::OrderBookEntry( double _price, 
     double _amount, 
     std::string _timestamp, 
