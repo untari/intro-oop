@@ -1,14 +1,37 @@
 #include "CSVReader.h"
 #include <iostream>
+#include <fstream>
 
 CSVReader::CSVReader()
 {
 
 }
-std::vector<OrderBookEntry> CSVReader::readCSV(std::string csvFile)
+std::vector<OrderBookEntry> CSVReader::readCSV(std::string csvFilename)
 {
     std::vector<OrderBookEntry> entries;
-        return entries;
+
+    std::ifstream csvFile{csvFilename};
+    std::string line;
+    if(csvFile.is_open())
+    {
+        while(std::getline(csvFile, line))
+        {
+            try
+            {
+                /* code */
+                  OrderBookEntry obe = stringsToOBE(tokenise(line, ',')); 
+                  entries.push_back(obe);
+            }
+            catch(const std::exception& e)
+            {
+                std::cout << "CSVReader::readCSV bad data " << entries.size() << "entries" << std::endl;
+            }
+            
+        } //end of while
+    }
+
+    std::cout << "CSVReader::readCSV read " << entries.size() << "entries" << std::endl;
+    return entries;
 }
 
 std::vector<std::string> CSVReader::tokenise(std::string csvLine, char separator)
@@ -22,7 +45,7 @@ std::vector<std::string> CSVReader::tokenise(std::string csvLine, char separator
         if(start == csvLine.length() || start == end) break;
         if(end >= 0) token = csvLine.substr(start, end - start);
         else token = csvLine.substr(start, csvLine.length() - start);
-        token.push_back(token);
+        tokens.push_back(token);
     start = end + 1;
     } while(end > 0);
     return tokens;
@@ -30,12 +53,13 @@ std::vector<std::string> CSVReader::tokenise(std::string csvLine, char separator
 
 OrderBookEntry CSVReader::stringsToOBE(std::vector<std::string> tokens)
 {
+    double price, amount;
     if (tokens.size() !=5)
     {
         std::cout << "bad line " << std::endl;
         throw std::exception{};
     }
-    // 
+    
     try{
         double price = std::stod(tokens[3]);
         double amount = std::stod(tokens[4]);
