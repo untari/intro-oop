@@ -5,6 +5,7 @@
 #include "OrderBook.h"
 #include "Wallet.h"
 #include "CandleStick.h"
+#include "CandlestickGraph.h"
 
 class MerkelMain
 {
@@ -23,15 +24,15 @@ class MerkelMain
         int getUserOption();
         void processUserOption(int userOption);
         void calculateCandlesticks();
+        
+        
 
         std::string currentTime;
 
-//        OrderBook orderBook{"20200317.csv"};
-	OrderBook orderBook{"20200602.csv"};
-        Wallet wallet;
+        // OrderBook orderBook{"20200317.csv"};
+        OrderBook orderBook{"20200602.csv"};
+            Wallet wallet;
 
-    // return the data type 
-    // std::vector<Candlestick> candlesticks; 
-
-    // candlrstick graph
+        // candlestick graph attribute
+        CandlestickGraph candlestickGraph;
 };

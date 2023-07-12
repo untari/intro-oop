@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include "OrderBookEntry.h"
+#include "OrderBook.h"
 #include "CSVReader.h"
 
 MerkelMain::MerkelMain()
@@ -186,11 +187,26 @@ void MerkelMain::gotoNextTimeframe()
 }
 
 // this function is to calculate the candlestick 
-// void MerkelMain::calculateCandlesticks()
-// {
-//     std::cout << "calculate candlestick " << std::endl;
-//     orderBook.getOrders(OrderBookType::ask, )
-// }
+void MerkelMain::calculateCandlesticks()
+{
+
+     // Get the previous filtered entries.
+    std::string previousTimestamp;
+    previousTimestamp = orderBook.getEarliestTime();
+    std::vector<OrderBookEntry> previousFilteredEntries = orderBook.getOrders(
+        OrderBookType::ask, "ETH/BTC", previousTimestamp);
+
+    // Get the filtered entries.
+    std::string nextTimestamp;
+    nextTimestamp = orderBook.getNextTime(previousTimestamp);
+    std::vector<OrderBookEntry> filteredEntries = orderBook.getOrders(
+        OrderBookType::ask, "ETH/BTC", nextTimestamp);
+
+
+    // Generate the candlestick.
+    candlestickGraph.generateCandlestick(previousFilteredEntries, filteredEntries);  
+                  
+}
  
 int MerkelMain::getUserOption()
 {
@@ -236,7 +252,7 @@ void MerkelMain::processUserOption(int userOption)
     }
     if (userOption == 6) 
     {
-         std::cout << "calculate the candlestick" << std::endl;
+        calculateCandlesticks();
     }  
     if (userOption == 7) 
     {
